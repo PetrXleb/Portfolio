@@ -1,0 +1,878 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: black;
+  overflow-x: hidden;
+}
+
+@font-face {
+  font-family: "FredokaOneRegular";
+  src: url("fonts/FredokaOneRegular/FredokaOneRegular.eot");
+  src: url("fonts/FredokaOneRegular/FredokaOneRegular.eot?#iefix")
+      format("embedded-opentype"),
+    url("fonts/FredokaOneRegular/FredokaOneRegular.woff") format("woff"),
+    url("fonts/FredokaOneRegular/FredokaOneRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "LexendDecaRegular";
+  src: url("fonts/LexendDecaRegular/LexendDecaRegular.eot");
+  src: url("fonts/LexendDecaRegular/LexendDecaRegular.eot?#iefix")
+      format("embedded-opentype"),
+    url("fonts/LexendDecaRegular/LexendDecaRegular.woff") format("woff"),
+    url("fonts/LexendDecaRegular/LexendDecaRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "LalezarRegular";
+  src: url("fonts/LalezarRegular/LalezarRegular.eot");
+  src: url("fonts/LalezarRegular/LalezarRegular.eot?#iefix")
+      format("embedded-opentype"),
+    url("fonts/LalezarRegular/LalezarRegular.woff") format("woff"),
+    url("fonts/LalezarRegular/LalezarRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+
+header {
+  width: 100vw;
+  min-height: 30vh;
+  background-color: #6980bd;
+  background-image: url("media/fonHeader.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-y: hidden;
+  clip-path: ellipse(87% 53% at 50% 44%);
+  clip-path: polygon(
+    100% 0%,
+    0% 0%,
+    0% 97.34%,
+    1.67% 97.63%,
+    3.33% 97.89%,
+    5% 98.11%,
+    6.67% 98.3%,
+    8.33% 98.45%,
+    10% 98.56%,
+    11.67% 98.63%,
+    13.33% 98.66%,
+    15% 98.66%,
+    16.67% 98.61%,
+    18.33% 98.53%,
+    20% 98.4%,
+    21.67% 98.24%,
+    23.33% 98.04%,
+    25% 97.81%,
+    26.67% 97.54%,
+    28.33% 97.24%,
+    30% 96.91%,
+    31.67% 96.55%,
+    33.33% 96.17%,
+    35% 95.76%,
+    36.67% 95.34%,
+    38.33% 94.9%,
+    40% 94.45%,
+    41.67% 93.98%,
+    43.33% 93.51%,
+    45% 93.04%,
+    46.67% 92.57%,
+    48.33% 92.09%,
+    50% 91.63%,
+    51.67% 91.17%,
+    53.33% 90.73%,
+    55% 90.3%,
+    56.67% 89.9%,
+    58.33% 89.51%,
+    60% 89.15%,
+    61.67% 88.82%,
+    63.33% 88.51%,
+    65% 88.24%,
+    66.67% 88%,
+    68.33% 87.79%,
+    70% 87.62%,
+    71.67% 87.49%,
+    73.33% 87.4%,
+    75% 87.35%,
+    76.67% 87.33%,
+    78.33% 87.36%,
+    80% 87.43%,
+    81.67% 87.53%,
+    83.33% 87.68%,
+    85% 87.86%,
+    86.67% 88.07%,
+    88.33% 88.32%,
+    90% 88.61%,
+    91.67% 88.92%,
+    93.33% 89.27%,
+    95% 89.64%,
+    96.67% 90.03%,
+    98.33% 90.45%,
+    100% 90.88%
+  );
+}
+
+.header_wrapper {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  overflow-y: hidden;
+  /*   background-color: rgba(0, 255, 255, 0.247);
+ */
+}
+
+.header_wrapper h1 {
+  margin-top: 10px;
+  color: #ffffff;
+  font-size: 128px;
+  font-family: "FredokaOneRegular";
+  font-weight: 500;
+  word-wrap: break-word;
+  -webkit-text-stroke: 2px #1c315b;
+  line-height: 1;
+  overflow-y: hidden;
+}
+
+.header_wrapper span {
+  color: white;
+  /*  color: #dd69ba; */
+}
+
+.header_wrapper p {
+  color: #eeff00;
+  font-size: 64px;
+  font-family: "LalezarRegular";
+  font-weight: 500;
+  word-wrap: break-word;
+  -webkit-text-stroke: 2px #1c315b;
+  line-height: 1.1;
+  overflow-y: hidden;
+  margin-bottom: 30px;
+}
+
+.worksButton {
+  margin-top: 30px;
+  margin-bottom: 100px;
+  width: 320px;
+  height: 80px;
+  background: white;
+  border-radius: 20px;
+  border: none;
+  color: #1c315b;
+  font-size: 40px;
+  font-family: "LexendDecaRegular";
+  font-weight: 400;
+  word-wrap: break-word;
+  transition: all 0.1s ease-in-out;
+}
+
+.worksButton:hover {
+  background: rgb(247, 247, 247);
+  scale: 0.97;
+}
+
+.worksButton:active {
+  background: rgb(216, 216, 216);
+  scale: 0.9;
+}
+
+button {
+  cursor: pointer;
+}
+
+.lang {
+  width: 90px;
+  height: 80px;
+  margin-left: 20px;
+  background: white;
+  border-radius: 20px;
+  border: none;
+  color: #1c315b;
+  font-size: 16px;
+  font-family: "LexendDecaRegular";
+  font-weight: 400;
+  word-wrap: break-word;
+  transition: all 0.1s ease-in-out;
+}
+
+.lang:hover {
+  background: rgb(247, 247, 247);
+  scale: 0.97;
+}
+
+.lang:active {
+  background: rgb(216, 216, 216);
+  scale: 0.9;
+}
+
+.lang img {
+  width: 50px;
+  height: 36px;
+}
+
+.bio {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 100vw;
+  min-height: 40vh;
+  overflow-y: hidden;
+}
+
+.about {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  height: 15%;
+  width: 260px;
+  color: #1c315b;
+  font-size: 48px;
+  font-family: "LexendDecaRegular";
+  font-weight: 400;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.biografia {
+  display: flex;
+  height: 50%;
+  width: 80%;
+  font-size: 24px;
+  font-family: "LexendDecaRegular", "Arial";
+  font-weight: 400;
+  word-wrap: break-word;
+  overflow-y: hidden;
+}
+
+.img-me {
+  fill: url(https://img.goodfon.com/original/5760x3840/5/45/kofe-paren-telefon-progulka.jpg);
+  background-color: red;
+}
+
+.bio-img {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  padding: 20px;
+  padding-left: 0px;
+  padding-top: 0px;
+  margin-right: 30px;
+  /*   clip-path: circle(100% at 50% 100%);
+ */
+  transition: all 0.5s ease-in-out;
+  overflow-y: hidden;
+}
+
+.bio-img:hover {
+  scale: 1.03;
+  /*   clip-path: circle(35% at 50% 50%);
+ */
+}
+
+.bio-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.bio-text {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  padding: 25px;
+  padding-top: 10px;
+}
+
+.skills-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+  height: 20%;
+  width: 100%;
+}
+
+.skills-img img:hover {
+  scale: 1.05;
+}
+
+.skills-img img {
+  height: 100px;
+  width: 100px;
+  margin: 20px;
+  border-radius: 5px;
+  transition: all 0.1s ease-in-out;
+}
+
+.skills-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15%;
+  width: 100%;
+  color: #142341;
+  font-size: 24px;
+  font-family: "LexendDecaRegular";
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.works {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  background-color: #f2f5fb;
+  width: 100vw;
+  min-height: 50vh;
+  clip-path: ellipse(200% 49% at 50% 50%);
+}
+
+.work-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 280px;
+  color: #142341;
+  font-size: 48px;
+  font-family: "LexendDecaRegular";
+  font-weight: 400;
+  word-wrap: break-word;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.work {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin-bottom: 80px;
+}
+
+.work-img {
+  margin: 40px;
+  width: 50%;
+  min-height: 350px;
+  background-image: url("media/topographic-map.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: all 0.15s ease-in-out;
+}
+
+.link {
+  display: inline-block;
+  width: 100%;
+  min-height: 350px;
+}
+
+.work-img:hover {
+  scale: 1.01;
+}
+
+.work-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  min-height: 350px;
+  color: #142341;
+  font-size: 16px;
+  font-family: "LexendDecaRegular", "Arial";
+  font-weight: 400;
+  word-wrap: break-word;
+  padding: 20px;
+}
+
+.work-text h2 {
+  font-family: "LexendDecaRegular", "Arial";
+  font-size: 24px;
+  color: #142341;
+  margin-bottom: 20px;
+}
+
+.timetable {
+  background-image: url("media/449d0f38a79c9458ad9f739a295e30ce.jpeg");
+}
+
+.shadow-timetable {
+  box-shadow: 0 0 0 2px rgb(255, 255, 255), 8px 8px 0 0 rgb(133, 145, 255),
+    0px 9px 30px rgba(104, 194, 247, 0.7);
+}
+
+.shadow-timetable:hover {
+  box-shadow: 0 0 0 2px rgb(255, 255, 255), 8px 8px 0 0 rgb(133, 145, 255),
+    0px 9px 30px rgba(104, 194, 247, 1);
+}
+
+.dictionaty {
+  background-image: url("media/books.jpg");
+}
+
+.shadow-dictionaty {
+  box-shadow: 0 0 0 2px rgb(255, 255, 255), -8px 8px 0 0 #958433,
+    0px 9px 30px rgba(251, 255, 8, 0.7);
+}
+
+.shadow-dictionaty:hover {
+  box-shadow: 0 0 0 2px rgb(255, 255, 255), -8px 8px 0 0 #958433,
+    0px 9px 30px rgba(251, 255, 8, 0.9);
+}
+
+.musicTest {
+  background-image: url("media/il_1588xN.1597218838_l5p4.jpg");
+}
+
+.shadow-musicTest {
+  box-shadow: 0 0 0 2px rgb(255, 255, 255), 8px 8px 0 0 #2b2727,
+    0px 9px 30px rgba(0, 0, 0, 0.7);
+}
+
+.shadow-musicTest:hover {
+  box-shadow: 0 0 0 2px rgb(255, 255, 255), 8px 8px 0 0 #2b2727,
+    0px 9px 30px rgba(0, 0, 0, 0.9);
+}
+
+.novel {
+  background-image: url("media/visualNovelFon.jpg");
+}
+
+.shadow-novel {
+  box-shadow: 0 0 0 2px rgb(255, 255, 255), -8px 8px 0 0 #a27d62,
+    0px 9px 30px rgba(8, 197, 255, 0.5);
+}
+
+.shadow-novel:hover {
+  box-shadow: 0 0 0 2px rgb(255, 255, 255), -8px 8px 0 0 #a27d62,
+    0px 9px 30px rgba(8, 197, 255, 0.9);
+}
+
+.quotes {
+  background-image: url("media/quotess.jpg");
+}
+
+.shadow-quotes {
+  box-shadow: 0 0 0 2px rgb(255, 255, 255), 8px 8px 0 0 #cf933e,
+    0px 9px 30px rgba(255, 189, 8, 0.7);
+}
+
+.shadow-quotes:hover {
+  box-shadow: 0 0 0 2px rgb(255, 255, 255), 8px 8px 0 0 #cf933e,
+    0px 9px 30px rgba(255, 189, 8, 0.9);
+}
+
+/* ///////////////////////////// */
+
+.mini-works {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  align-self: center;
+  width: 100vw;
+  min-height: 40vh;
+}
+
+.m-work-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: #142341;
+  font-size: 36px;
+  font-family: "LexendDecaRegular";
+  font-weight: 400;
+  word-wrap: break-word;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.m-work-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 70%;
+  padding: 40px;
+}
+
+.m-work {
+  background-color: #457ceb;
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+  border-radius: 10px;
+  background-image: url("media/7898-normal.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0px 9px 30px rgba(28, 180, 226, 0.3);
+  transition: all 0.15s ease-in-out;
+  overflow-y: hidden;
+}
+
+.m-work-link {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 250px;
+  height: 250px;
+  overflow-y: hidden;
+}
+
+.m-work:hover {
+  scale: 1.05;
+}
+
+.m-work:hover .m-work-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.m-work-text {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 250px;
+  height: 250px;
+  padding: 20px;
+  font-family: "LexendDecaRegular", Arial;
+  overflow-y: hidden;
+}
+
+.m-work-text h3 {
+  font-family: "LexendDecaRegular", Arial;
+  margin-bottom: 10px;
+  color: #f2f5fb;
+}
+
+.m-work-text p {
+  font-family: "LexendDecaRegular", Arial;
+  margin-bottom: 10px;
+  color: #f2f5fb;
+  font-size: 14px;
+}
+
+.m-work:hover .m-work-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.blackout {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 250px;
+  height: 250px;
+  background-color: #142341d2;
+}
+
+.m-work:hover .blackout {
+  display: block;
+}
+
+.сheckers {
+  background-image: url("media/1678149973_bogatyr-club-p-turnir-po-shashkam-foni-oboi-7.jpg");
+  box-shadow: 0px 9px 30px rgba(251, 255, 24, 0.5);
+}
+
+.password {
+  background-image: url("media/PASSWORD-min.jpg");
+  box-shadow: 0px 9px 30px rgba(2, 91, 255, 0.7);
+}
+.canvass {
+  background-image: url("media/56a1c67d46a87b6214e005a85d22439a.jpeg");
+  box-shadow: 0px 9px 30px rgba(255, 72, 0, 0.7);
+}
+.billiard {
+  background-image: url("media/kartinki-bilyard-21.jpg");
+  box-shadow: 0px 9px 30px rgba(30, 209, 89, 0.7);
+}
+.simpleWebsite {
+  background-image: url("media/1612177555_19-p-abstraktsiya-v-zhivopisi-art-kartinki-21.jpg");
+  box-shadow: 0px 9px 30px rgba(37, 188, 248, 0.7);
+}
+
+.neuralNetwork {
+  background-image: url("media/1618528257_43-phonoteka_org-p-neiroset-fon-48-min.jpg");
+  box-shadow: 0px 9px 30px rgba(30, 12, 185, 0.7);
+}
+
+.nyanCat {
+  background-image: url("media/50b6910deab0f901c9cd97af5ba71c54.jpg");
+  box-shadow: 0px 9px 30px rgba(198, 10, 204, 0.7);
+}
+
+.m-work-1 {
+  background-image: url("media/8d352b0bcda36143ad2a070ab47fde8b.jpg");
+  box-shadow: 0px 9px 30px rgba(137, 255, 235, 0.788);
+}
+
+.m-work-2 {
+  background-image: url("media/fonSea.jpg");
+  box-shadow: 0px 9px 30px rgba(0, 195, 255, 0.712);
+}
+
+/* === */
+
+.bottom {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #577ce4;
+  align-self: center;
+  width: 100vw;
+  min-height: 20vh;
+  margin-top: 50px;
+  background-image: url("media/fonHeader.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  clip-path: polygon(
+    100% 100%,
+    0% 100%,
+    0% 0.33%,
+    1.67% 0.37%,
+    3.33% 0.47%,
+    5% 0.64%,
+    6.67% 0.88%,
+    8.33% 1.18%,
+    10% 1.54%,
+    11.67% 1.96%,
+    13.33% 2.43%,
+    15% 2.94%,
+    16.67% 3.5%,
+    18.33% 4.09%,
+    20% 4.71%,
+    21.67% 5.35%,
+    23.33% 6%,
+    25% 6.67%,
+    26.67% 7.33%,
+    28.33% 7.98%,
+    30% 8.62%,
+    31.67% 9.24%,
+    33.33% 9.83%,
+    35% 10.39%,
+    36.67% 10.9%,
+    38.33% 11.37%,
+    40% 11.79%,
+    41.67% 12.15%,
+    43.33% 12.45%,
+    45% 12.69%,
+    46.67% 12.86%,
+    48.33% 12.97%,
+    50% 13%,
+    51.67% 12.97%,
+    53.33% 12.86%,
+    55% 12.69%,
+    56.67% 12.45%,
+    58.33% 12.15%,
+    60% 11.79%,
+    61.67% 11.37%,
+    63.33% 10.9%,
+    65% 10.39%,
+    66.67% 9.83%,
+    68.33% 9.24%,
+    70% 8.62%,
+    71.67% 7.98%,
+    73.33% 7.33%,
+    75% 6.67%,
+    76.67% 6%,
+    78.33% 5.35%,
+    80% 4.71%,
+    81.67% 4.09%,
+    83.33% 3.5%,
+    85% 2.94%,
+    86.67% 2.43%,
+    88.33% 1.96%,
+    90% 1.54%,
+    91.67% 1.18%,
+    93.33% 0.88%,
+    95% 0.64%,
+    96.67% 0.47%,
+    98.33% 0.37%,
+    100% 0.33%
+  );
+}
+
+.bottom-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 80%;
+}
+
+.bottom-wrap h2 {
+  color: white;
+  font-size: 64px;
+  font-family: "LexendDecaRegular";
+  font-weight: 400;
+  word-wrap: break-word;
+  -webkit-text-stroke: 2px #1c315b;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.bottom-wrap p,
+.bottom-wrap a {
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+  font-size: 36px;
+  font-family: "LexendDecaRegular";
+  font-weight: 400;
+  word-wrap: break-word;
+  -webkit-text-stroke: 1.5px #1c315b;
+  margin-bottom: 8px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.bottom-icon {
+  width: 45px;
+  height: 45px;
+}
+
+/* Для телефонов */
+
+.work-img-mobile {
+  display: none;
+}
+
+@media screen and (orientation: portrait) {
+  .biografia {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .bio-img {
+    display: flex;
+    width: 70%;
+    padding: 20px;
+    padding-top: 0px;
+  }
+
+  .bio-text {
+    display: flex;
+    width: 70%;
+    padding-top: 0px;
+    position: relative;
+    top: -50px;
+  }
+
+  .skills-text {
+    font-size: 30px;
+  }
+
+  .works {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    background-color: #f2f5fb;
+    width: 100vw;
+    min-height: 50vh;
+    clip-path: ellipse(350% 49% at 50% 50%);
+  }
+
+  .work-header {
+    margin-top: 100px;
+  }
+
+  .work {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 80px;
+  }
+
+  .work-img {
+    display: none;
+  }
+
+  .work-text {
+    width: 80%;
+    min-height: 350px;
+    font-size: 24px;
+    padding: 20px;
+  }
+
+  .work-img-mobile {
+    display: block;
+    margin: 20px;
+    width: 60%;
+    min-height: 350px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all 0.15s ease-in-out;
+  }
+
+  .work-text h2 {
+    font-size: 30px;
+    width: 80%;
+  }
+
+  .m-work-wrap {
+    width: 80%;
+  }
+
+  .m-work {
+    width: 200px;
+    height: 200px;
+  }
+
+  .m-work-text {
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+  }
+
+  .m-work-text h3 {
+    font-size: 16px;
+  }
+
+  .m-work-text p {
+    font-size: 12px;
+  }
+
+  .bottom-wrap h2 {
+    font-size: 72px;
+  }
+
+  .bottom-wrap p,
+  .bottom-wrap a {
+    font-size: 38px;
+  }
+
+  .bottom-icon {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* /////////////////////// */
+.hidden {
+  display: none;
+}
