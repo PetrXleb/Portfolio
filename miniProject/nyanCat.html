@@ -1,0 +1,84 @@
+<html lang="en">
+  <head>
+    <title>NyanCat</title>
+    <script src="js.js"></script>
+  </head>
+  <style>
+    .cat {
+      width: 700px;
+    }
+  </style>
+
+  <body background="white">
+    <div id="blueRect">
+      <img
+        src="https://pluspng.com/img-png/nyan-cat-png-cat-text-cartoon-font-1000.gif"
+        class="cat"
+      />
+    </div>
+
+    <script>
+      let speed = 10000000;
+      speed = +prompt(
+        "Введи скорость изменения цвета в миллисекундах. Эпилепсикам ниже 1000 мс НЕ СТАВИТЬ!",
+        1000
+      );
+      let i = 0;
+
+      setInterval(() => {
+        switch (i) {
+          case 0:
+            document.body.style.background = "red";
+            break;
+          case 1:
+            document.body.style.background = "orange";
+            break;
+          case 2:
+            document.body.style.background = "yellow";
+            break;
+          case 3:
+            document.body.style.background = "green";
+            break;
+          case 4:
+            document.body.style.background = "aqua";
+            break;
+          case 5:
+            document.body.style.background = "blue";
+            break;
+          case 6:
+            document.body.style.background = "purple";
+            break;
+        }
+        i++;
+        if (i == 7) i = 0;
+      }, speed);
+
+      alert("Используй стрелки для передвижения!");
+
+      function moveRect(e) {
+        var blueRect = document.getElementById("blueRect");
+        var cs = window.getComputedStyle(blueRect);
+        var left = parseInt(cs.marginLeft);
+        var top = parseInt(cs.marginTop);
+
+        switch (e.keyCode) {
+          case 37:
+            if (left > 0) blueRect.style.marginLeft = left - 30 + "px";
+            break;
+          case 38:
+            if (top > 0) blueRect.style.marginTop = top - 30 + "px";
+            break;
+          case 39:
+            if (left < document.documentElement.clientWidth - 100)
+              blueRect.style.marginLeft = left + 30 + "px";
+            break;
+          case 40:
+            if (top < document.documentElement.clientHeight - 100)
+              blueRect.style.marginTop = top + 30 + "px";
+            break;
+        }
+      }
+      addEventListener("keydown", moveRect);
+    </script>
+  </body>
+</html>

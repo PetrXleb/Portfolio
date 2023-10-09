@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Checkers</title>
+  </head>
+
+  <style>
+    body {
+      background-color: rgb(226, 228, 101);
+    }
+    h1 {
+      color: red;
+    }
+    #parent div {
+      display: flex;
+      justify-content: center;
+    }
+    button {
+      width: 60px;
+      height: 60px;
+      margin: 2px;
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+    .redd {
+      background-color: rgb(255, 255, 255);
+      width: 100px;
+      height: 60px;
+      border: 2px solid red;
+      border-radius: 5px;
+    }
+    .greenn {
+      background-color: rgb(255, 255, 255);
+      width: 100px;
+      height: 60px;
+      border: 2px solid rgb(0, 255, 13);
+      border-radius: 5px;
+    }
+  </style>
+
+  <body>
+    <br />
+    <div id="parent">
+      <center>
+        <h2 class="moveTitle">Ход <spam style="color: red">красных!</spam></h2>
+      </center>
+      <div>
+        <button id="0">◯</button>
+        <button id="1">◯</button>
+        <button id="2">◯</button>
+        <button id="3">◯</button>
+        <button id="4">◯</button>
+        <button id="5">◯</button>
+        <button id="6">◯</button>
+        <button id="7">◯</button>
+      </div>
+      <div>
+        <button id="10">◯</button>
+        <button id="11">◯</button>
+        <button id="12">◯</button>
+        <button id="13">◯</button>
+        <button id="14">◯</button>
+        <button id="15">◯</button>
+        <button id="16">◯</button>
+        <button id="17">◯</button>
+      </div>
+      <div>
+        <button id="20">◯</button>
+        <button id="21">◯</button>
+        <button id="22">◯</button>
+        <button id="23">◯</button>
+        <button id="24">◯</button>
+        <button id="25">◯</button>
+        <button id="26">◯</button>
+        <button id="27">◯</button>
+      </div>
+      <div>
+        <button id="30">◯</button>
+        <button id="31">◯</button>
+        <button id="32">◯</button>
+        <button id="33">◯</button>
+        <button id="34">◯</button>
+        <button id="35">◯</button>
+        <button id="36">◯</button>
+        <button id="37">◯</button>
+      </div>
+      <div>
+        <button id="40">◯</button>
+        <button id="41">◯</button>
+        <button id="42">◯</button>
+        <button id="43">◯</button>
+        <button id="44">◯</button>
+        <button id="45">◯</button>
+        <button id="46">◯</button>
+        <button id="47">◯</button>
+      </div>
+      <div>
+        <button id="50">◯</button>
+        <button id="51">◯</button>
+        <button id="52">◯</button>
+        <button id="53">◯</button>
+        <button id="54">◯</button>
+        <button id="55">◯</button>
+        <button id="56">◯</button>
+        <button id="57">◯</button>
+      </div>
+      <div>
+        <button id="60">◯</button>
+        <button id="61">◯</button>
+        <button id="62">◯</button>
+        <button id="63">◯</button>
+        <button id="64">◯</button>
+        <button id="65">◯</button>
+        <button id="66">◯</button>
+        <button id="67">◯</button>
+      </div>
+      <div>
+        <button id="70">◯</button>
+        <button id="71">◯</button>
+        <button id="72">◯</button>
+        <button id="73">◯</button>
+        <button id="74">◯</button>
+        <button id="75">◯</button>
+        <button id="76">◯</button>
+        <button id="77">◯</button>
+      </div>
+    </div>
+    <br />
+    <center>
+      <button id="200" class="redd"></button>
+      <button id="201" class="greenn"></button>
+    </center>
+  </body>
+
+  <script>
+    "use strict";
+    //Создание массива - поле для игры
+    let red_count = 12;
+    let green_count = 12;
+
+    document.getElementById(200).innerHTML = red_count;
+    document.getElementById(201).innerHTML = green_count;
+
+    let cell_red = {
+      color_black: true,
+      hascheckers_red: true,
+    };
+    let cell_green = {
+      color_black: true,
+      hascheckers_green: true,
+    };
+    let cell = {
+      color_black: true,
+      hascheckers_red: false,
+      hascheckers_green: false,
+    };
+    let white = {
+      color_black: false,
+    };
+    let skip = {
+      skipp: true,
+    };
+    let testt = {
+      color_black: true,
+      hascheckers_red: false,
+      hascheckers_red: false,
+    };
+    let field = [
+      [
+        white,
+        cell_red,
+        white,
+        cell_red,
+        white,
+        cell_red,
+        white,
+        cell_red,
+        skip,
+        skip,
+      ],
+      [
+        cell_red,
+        white,
+        cell_red,
+        white,
+        cell_red,
+        white,
+        cell_red,
+        white,
+        skip,
+        skip,
+      ],
+      [
+        white,
+        cell_red,
+        white,
+        cell_red,
+        white,
+        cell_red,
+        white,
+        cell_red,
+        skip,
+        skip,
+      ],
+
+      [cell, white, cell, white, cell, white, cell, white, skip, skip],
+      [white, cell, white, cell, white, cell, white, cell, skip, skip],
+
+      [
+        cell_green,
+        white,
+        cell_green,
+        white,
+        cell_green,
+        white,
+        cell_green,
+        white,
+        skip,
+        skip,
+      ],
+      [
+        white,
+        cell_green,
+        white,
+        cell_green,
+        white,
+        cell_green,
+        white,
+        cell_green,
+        skip,
+        skip,
+      ],
+      [
+        cell_green,
+        white,
+        cell_green,
+        white,
+        cell_green,
+        white,
+        cell_green,
+        white,
+        skip,
+        skip,
+      ],
+
+      [skip, skip, skip, skip, skip, skip, skip, skip, skip, skip],
+      [skip, skip, skip, skip, skip, skip, skip, skip, skip, skip],
+    ];
+    console.log(field);
+    //
+    //Чей сейчас ход? (redd, greenn)
+    //
+    let whoISgoNOW = "redd";
+    //let whoISgoNOW = 'greenn';
+
+    //эти глобальные переменные нужны для провеки
+    let canEatLeft = false;
+    let canEatRight = false;
+    let canEatLeftDown = false;
+    let canEatRightDown = false;
+    //
+    //Создание кнопок действия
+    //
+    document.getElementById("parent").addEventListener("click", function (e) {
+      for (let i = 0; i < 99; i++) {
+        //позиция
+        let [t1, t2] = e.target.id.split("");
+        if (t2 == undefined) {
+          t2 = t1;
+          t1 = 0;
+        }
+
+        //позиция и инфа
+        if (e.target && e.target.id == i) {
+          console.log("===");
+          console.log(t1);
+          console.log(t2);
+
+          if (
+            hasCheckersORnot(t1, t2) &&
+            (goStraight(t1, t2) || EatSomeone(t1, t2))
+          ) {
+            Game(t1, t2);
+          }
+        }
+        //меняем цвет кнопок
+        /* if(field[t1][t2].color_black == true){
+            //e.target.style.backgroundColor = "black";
+        } */
+      }
+    });
+    //
+    //Смена цвета кнопок - подготовка игрового поля
+    //
+    document.addEventListener("DOMContentLoaded", ready);
+    //обновление поля
+    function ready() {
+      for (let i = 0; i < 78; i++) {
+        //позиция
+        let [t1, t2] = i.toString().split("");
+        if (t2 == undefined) {
+          t2 = t1;
+          t1 = 0;
+        }
+        //скип 8 и 9
+        if (t2 == 8 || t2 == 9) {
+          continue;
+        }
+        //красим в зависимости от расположения
+        let Elementt = document.getElementById(i);
+
+        if (field[t1][t2].color_black == true) {
+          Elementt.style.backgroundColor = "black";
+        }
+        if (field[t1][t2].hascheckers_green == true) {
+          Elementt.style.color = "green";
+        }
+        if (field[t1][t2].hascheckers_red == true) {
+          Elementt.style.color = "red";
+        }
+        //если нет шашек - убираем кружок
+
+        //белые ячейки очищаются
+        if (field[t1][t2].color_black == false) {
+          document.getElementById(i).innerHTML = "&nbsp";
+        }
+      }
+    }
+
+    //
+    //Проверка на наличие шашки
+    //
+    function hasCheckersORnot(t1, t2) {
+      console.log(field[t1][t2]);
+      if (field[t1][t2].hascheckers_red == true) {
+        console.log("Есть красная шашка");
+        if (whoISgoNOW == "redd") {
+          return true;
+        } else return false;
+      } else if (field[t1][t2].hascheckers_green == true) {
+        console.log("Есть зеленая шашка");
+        if (whoISgoNOW == "greenn") {
+          return true;
+        } else return false;
+      } else {
+        console.log("Шашек нет");
+        return false;
+      }
+    }
+    //
+    //
+    //
+    //
+    //
+    function Game(t1, t2) {
+      //0 - никуда, 1 - налево, 2 - направо, 3 - в обе стороны
+      //let resultGo = goStraight(t1, t2);
+      let step = 0;
+      let resultGo = goStraight(t1, t2);
+      //0 - никого нельзя есть, 1 - налево, 2 - направо, 3 - налево-внизу, 4 - направо внизу
+      canEatLeft = false;
+      canEatLeftDown = false;
+      canEatRight = false;
+      canEatRightDown = false;
+      let resultEat = EatSomeone(t1, t2);
+
+      console.log(canEatLeft);
+      console.log(canEatLeftDown);
+      console.log(canEatRight);
+      console.log(canEatRightDown);
+      //нужно чтобы после красных зеленые сразу же не шли
+      let flag = true;
+      let flag_do = false;
+      let flag_eat = false;
+      //
+      //для красных
+      //
+      if (whoISgoNOW == "redd") {
+        //
+        //Выбираем действие далее проверяем на возможность выполнения этого действия
+        //Если можем выполнить - то переходим в изменения поля
+        //
+        if (resultGo == 0 && resultEat == 0) {
+          console.log("/\\");
+        } else {
+          //
+          //
+          step = prompt(
+            "Пойти куда? налево(1) направо(2). Съесть куда? лево(3) право(4) лево-низ(5) право-низ(6). Другая шашка?(0) "
+          );
+          resultEat = 1;
+          if (step == 1 || step == 2 || step == 0) {
+            //логика для простого хода вперёд
+            if (step == 0) {
+              console.log("Не та шашка!");
+            } else {
+              //проверка на возможность ходить в данном направлении
+              if (resultGo == step || resultGo == 3) {
+                flag_do = true;
+              } else {
+                console.log("Сюда идти нельзя!!");
+              }
+            }
+          } else {
+            //логика для атаки
+            if (resultEat < step) {
+              flag_eat = true;
+            }
+          }
+        }
+        //
+        //Изменение поля при обычном ходе для красных
+        //
+        while (flag_do) {
+          flag_do = false;
+          if (resultGo == 0) break;
+          if (resultGo == 3) {
+            if (step == 1) {
+              //логика чтобы пойти налево
+              //добавляем шашку вперед и удаляем предыдущую
+              field[+t1 + 1][+t2 - 1] = cell_red;
+              field[+t1][+t2] = cell;
+              //объеденяем t1 и t2 - убираем нолик позади и добавляем нолик впереди
+              let tt = "" + t1 + t2;
+              document.getElementById(tt).innerHTML = "&nbsp";
+              let d1 = (+t1 + 1).toString();
+              let d2 = (+t2 - 1).toString();
+              let dd = "" + d1 + d2;
+
+              document.getElementById(dd).innerHTML = "◯";
+              //обновляем цвет
+              ready();
+              //
+              //Отдаём очередь
+              //изменяем надпись наверху страницы
+              document.querySelector(
+                ".moveTitle"
+              ).innerHTML = `Ход <spam style="color: limegreen">зелёных!</spam>`;
+              whoISgoNOW = "greenn";
+              flag = false;
+            } else {
+              //логика чтобы пойти направо
+
+              //добавляем шашку вперед и удаляем предыдущую
+              field[+t1 + 1][+t2 + 1] = cell_red;
+              field[+t1][+t2] = cell;
+              //объеденяем t1 и t2 - убираем нолик позади и добавляем нолик впереди
+              let tt = "" + t1 + t2;
+              document.getElementById(tt).innerHTML = "&nbsp";
+              let d1 = (+t1 + 1).toString();
+              let d2 = (+t2 + 1).toString();
+              let dd = "" + d1 + d2;
+
+              document.getElementById(dd).innerHTML = "◯";
+              //обновляем цвет
+              ready();
+              //
+              //Отдаём очередь
+              //изменяем надпись наверху страницы
+              document.querySelector(
+                ".moveTitle"
+              ).innerHTML = `Ход <spam style="color: limegreen">зелёных!</spam>`;
+              whoISgoNOW = "greenn";
+              flag = false;
+            }
+          }
+          //если можно идти только налево
+          if (resultGo == 1) {
+            //логика чтобы пойти налево
+            //добавляем шашку вперед и удаляем предыдущую
+            field[+t1 + 1][+t2 - 1] = cell_red;
+            field[+t1][+t2] = cell;
+            //объеденяем t1 и t2 - убираем нолик позади и добавляем нолик впереди
+            let tt = "" + t1 + t2;
+            document.getElementById(tt).innerHTML = "&nbsp";
+            let d1 = (+t1 + 1).toString();
+            let d2 = (+t2 - 1).toString();
+            let dd = "" + d1 + d2;
+
+            document.getElementById(dd).innerHTML = "◯";
+            //обновляем цвет
+            ready();
+            //
+            //Отдаём очередь
+            //изменяем надпись наверху страницы
+            document.querySelector(
+              ".moveTitle"
+            ).innerHTML = `Ход <spam style="color: limegreen">зелёных!</spam>`;
+            whoISgoNOW = "greenn";
+            flag = false;
+          }
+          if (resultGo == 2) {
+            //логика чтобы пойти направо
+
+            //добавляем шашку вперед и удаляем предыдущую
+            field[+t1 + 1][+t2 + 1] = cell_red;
+            field[+t1][+t2] = cell;
+            //объеденяем t1 и t2 - убираем нолик позади и добавляем нолик впереди
+            let tt = "" + t1 + t2;
+            document.getElementById(tt).innerHTML = "&nbsp";
+            let d1 = (+t1 + 1).toString();
+            let d2 = (+t2 + 1).toString();
+            let dd = "" + d1 + d2;
+
+            document.getElementById(dd).innerHTML = "◯";
+            //обновляем цвет
+            ready();
+            //
+            //Отдаём очередь
+            //изменяем надпись наверху страницы
+            document.querySelector(
+              ".moveTitle"
+            ).innerHTML = `Ход <spam style="color: limegreen">зелёных!</spam>`;
+            whoISgoNOW = "greenn";
+            flag = false;
+          }
+        }
+        //
+        //Изменение поля при атаке для красных
+        //
+        while (flag_eat) {
+          flag_eat = false;
+          //
+          //съесть лево
+          //
+
+          //если все флаги отрицательные - скипаем
+          if (
+            canEatLeft == false &&
+            canEatLeftDown == false &&
+            canEatRight == false &&
+            canEatRightDown == false
+          ) {
+            console.log("Невозможно ничего съесть!!");
+            break;
+          }
+          //или выполняем обрисовку
+          if (canEatLeft == true && step == 3) {
+            //добавляем шашку вперед и удаляем предыдущую и съеденную
+            field[+t1 + 2][+t2 - 2] = cell_red;
+            field[+t1][+t2] = cell;
+            field[+t1 + 1][+t2 - 1] = cell;
+            //объеденяем t1 и t2 - убираем нолик позади и добавляем нолик впереди
+            let tt = "" + t1 + t2;
+            document.getElementById(tt).innerHTML = "&nbsp";
+            let d1 = (+t1 + 2).toString();
+            let d2 = (+t2 - 2).toString();
+            let dd = "" + d1 + d2;
+            document.getElementById(dd).innerHTML = "◯";
+            //удаляем съеденную шашку
+            let v1 = (+t1 + 1).toString();
+            let v2 = (+t2 - 1).toString();
+            let vv = "" + v1 + v2;
+            document.getElementById(vv).innerHTML = "&nbsp";
+            //обновляем цвет
+            ready();
+            canEatLeft = false;
+            canEatLeftDown = false;
+            canEatRight = false;
+            canEatRightDown = false;
+            //обновляем счётчик
+            green_count = green_count - 1;
+            document.getElementById(201).innerHTML = green_count;
+
+            //смотрим повторное кушание
+            let againEat = EatAgain(dd);
+            if (againEat == true) {
+              whoISgoNOW = "redd";
+              flag = false;
+            } else {
+              //Отдаём очередь
+              //изменяем надпись наверху страницы
+              document.querySelector(
+                ".moveTitle"
+              ).innerHTML = `Ход <spam style="color: limegreen">зелёных!</spam>`;
+              whoISgoNOW = "greenn";
+              flag = false;
+            }
+          }
+          //
+          //съесть право
+          //
+          if (canEatRight == true && step == 4) {
+            //добавляем шашку вперед и удаляем предыдущую и съеденную
+            field[+t1 + 2][+t2 + 2] = cell_red;
+            field[+t1][+t2] = cell;
+            field[+t1 + 1][+t2 + 1] = cell;
+            //объеденяем t1 и t2 - убираем нолик позади и добавляем нолик впереди
+            let tt = "" + t1 + t2;
+            document.getElementById(tt).innerHTML = "&nbsp";
+            let d1 = (+t1 + 2).toString();
+            let d2 = (+t2 + 2).toString();
+            let dd = "" + d1 + d2;
+            document.getElementById(dd).innerHTML = "◯";
+            //удаляем съеденную шашку
+            let v1 = (+t1 + 1).toString();
+            let v2 = (+t2 + 1).toString();
+            let vv = "" + v1 + v2;
+            document.getElementById(vv).innerHTML = "&nbsp";
+            //обновляем цвет
+            ready();
+            canEatLeft = false;
+            canEatLeftDown = false;
+            canEatRight = false;
+            canEatRightDown = false;
+            //обновляем счётчик
+            green_count = green_count - 1;
+            document.getElementById(201).innerHTML = green_count;
+            //смотрим повторное кушание
+            let againEat = EatAgain(dd);
+            if (againEat == true) {
+              whoISgoNOW = "redd";
+              flag = false;
+            } else {
+              //Отдаём очередь
+              //изменяем надпись наверху страницы
+              document.querySelector(
+                ".moveTitle"
+              ).innerHTML = `Ход <spam style="color: limegreen">зелёных!</spam>`;
+              whoISgoNOW = "greenn";
+              flag = false;
+            }
+          }
+          //
+          //съесть лево-низ
+          //
+          if (canEatLeftDown == true && step == 5) {
+            //добавляем шашку вперед и удаляем предыдущую и съеденную
+            field[+t1 - 2][+t2 - 2] = cell_red;
+            field[+t1][+t2] = cell;
+            field[+t1 - 1][+t2 - 1] = cell;
+            //объеденяем t1 и t2 - убираем нолик позади и добавляем нолик впереди
+            let tt = "" + t1 + t2;
+            document.getElementById(tt).innerHTML = "&nbsp";
+            let d1 = (+t1 - 2).toString();
+            let d2 = (+t2 - 2).toString();
+            let dd = "" + d1 + d2;
+            document.getElementById(dd).innerHTML = "◯";
+            //удаляем съеденную шашку
+            let v1 = (+t1 - 1).toString();
+            let v2 = (+t2 - 1).toString();
+            let vv = "" + v1 + v2;
+            document.getElementById(vv).innerHTML = "&nbsp";
+            //обновляем цвет
+            ready();
+            canEatLeft = false;
+            canEatLeftDown = false;
+            canEatRight = false;
+            canEatRightDown = false;
+            //обновляем счётчик
+            green_count = green_count - 1;
+            document.getElementById(201).innerHTML = green_count;
+
+            //смотрим повторное кушание
+            let againEat = EatAgain(dd);
+            if (againEat == true) {
+              whoISgoNOW = "redd";
+              flag = false;
+            } else {
+              //Отдаём очередь
+              //изменяем надпись наверху страницы
+              document.querySelector(
+                ".moveTitle"
+              ).innerHTML = `Ход <spam style="color: limegreen">зелёных!</spam>`;
+              whoISgoNOW = "greenn";
+              flag = false;
+            }
+          }
+          //
+          //съесть право-низ
+          //
+          if (canEatRightDown == true && step == 6) {
+            //добавляем шашку вперед и удаляем предыдущую и съеденную
+            field[+t1 - 2][+t2 + 2] = cell_red;
+            field[+t1][+t2] = cell;
+            field[+t1 - 1][+t2 + 1] = cell;
+            //объеденяем t1 и t2 - убираем нолик позади и добавляем нолик впереди
+            let tt = "" + t1 + t2;
+            document.getElementById(tt).innerHTML = "&nbsp";
+            let d1 = (+t1 - 2).toString();
+            let d2 = (+t2 + 2).toString();
+            let dd = "" + d1 + d2;
+            document.getElementById(dd).innerHTML = "◯";
+            //удаляем съеденную шашку
+            let v1 = (+t1 - 1).toString();
+            let v2 = (+t2 + 1).toString();
+            let vv = "" + v1 + v2;
+            document.getElementById(vv).innerHTML = "&nbsp";
+            //обновляем цвет
+            ready();
+            canEatLeft = false;
+            canEatLeftDown = false;
+            canEatRight = false;
+            canEatRightDown = false;
+            //обновляем счётчик
+            green_count = green_count - 1;
+            document.getElementById(201).innerHTML = green_count;
+
+            //смотрим повторное кушание
+            let againEat = EatAgain(dd);
+            if (againEat == true) {
+              whoISgoNOW = "redd";
+              flag = false;
+            } else {
+              //Отдаём очередь
+              //изменяем надпись наверху страницы
+              document.querySelector(
+                ".moveTitle"
+              ).innerHTML = `Ход <spam style="color: limegreen">зелёных!</spam>`;
+              whoISgoNOW = "greenn";
+              flag = false;
+            }
+          }
+        }
+      }
+      //
+      //для зеленых
+      //
+      if (whoISgoNOW == "greenn" && flag == true) {
+        //
+        //Выбираем действие далее проверяем на возможность выполнения этого действия
+        //Если можем выполнить - то переходим в изменения поля
+        //
+        if (resultGo == 0 && resultEat == 0) {
+          console.log("/\\");
+        } else {
+          //
+          //
+          step = prompt(
+            "Пойти куда? налево(1) направо(2). Съесть куда? лево(3) право(4) лево-низ(5) право-низ(6). Другая шашка?(0) "
+          );
+          resultEat = 1;
+          if (step == 1 || step == 2 || step == 0) {
+            //логика для простого хода вперёд
+            if (step == 0) {
+              console.log("Не та шашка!");
+              flag_do = false;
+            } else {
+              //проверка на возможность ходить в данном направлении
+              if (resultGo == step || resultGo == 3) {
+                flag_do = true;
+              } else {
+                flag_do = false;
+                console.log("Сюда идти нельзя!!");
+              }
+            }
+          } else {
+            //логика для атаки
+            if (resultEat < step) {
+              flag_eat = true;
+            }
+          }
+        }
+        //
+        //Изменение поля при обычном ходе для зеленых
+        //
+        while (flag_do) {
+          flag_do = false;
+          if (resultGo == 0) break;
+          if (resultGo == 3) {
+            if (step == 1) {
+              //логика чтобы пойти налево
+              //добавляем шашку вперед и удаляем предыдущую
+              field[+t1 - 1][+t2 - 1] = cell_green;
+              field[+t1][+t2] = cell;
+              //объеденяем t1 и t2 - убираем нолик позади и добавляем нолик впереди
+              let tt = "" + t1 + t2;
+              document.getElementById(tt).innerHTML = "&nbsp";
+              let d1 = (+t1 - 1).toString();
+              let d2 = (+t2 - 1).toString();
+              let dd = "" + d1 + d2;
+
+              document.getElementById(dd).innerHTML = "◯";
+              //обновляем цвет
+              ready();
+              //
+              //Отдаём очередь
+              //изменяем надпись наверху страницы
+              //изменяем надпись наверху страницы
+              document.querySelector(
+                ".moveTitle"
+              ).innerHTML = `Ход <spam style="color: red">красных!</spam>`;
+              whoISgoNOW = "redd";
+            } else {
+              //логика чтобы пойти направо
+              //добавляем шашку вперед и удаляем предыдущую
+              field[+t1 - 1][+t2 + 1] = cell_green;
+              field[+t1][+t2] = cell;
+              //объеденяем t1 и t2 - убираем нолик позади и добавляем нолик впереди
+              let tt = "" + t1 + t2;
+              document.getElementById(tt).innerHTML = "&nbsp";
+              tt = "" + t1 + t2;
+              let d1 = (+t1 - 1).toString();
+              let d2 = (+t2 + 1).toString();
+              let dd = "" + d1 + d2;
+
+              document.getElementById(dd).innerHTML = "◯";
+              //обновляем цвет
+              ready();
+              //
+              //Отдаём очередь
+              document.querySelector(
+                ".moveTitle"
+              ).innerHTML = `Ход <spam style="color: red">красных!</spam>`;
+              whoISgoNOW = "redd";
+            }
+          }
+          //пойти только налево
+          if (resultGo == 1) {
+            //логика чтобы пойти налево
+            //добавляем шашку вперед и удаляем предыдущую
+            field[+t1 - 1][+t2 - 1] = cell_green;
+            field[+t1][+t2] = cell;
+            //объеденяем t1 и t2 - убираем нолик позади и добавляем нолик впереди
+            let tt = "" + t1 + t2;
+            document.getElementById(tt).innerHTML = "&nbsp";
+            let d1 = (+t1 - 1).toString();
+            let d2 = (+t2 - 1).toString();
+            let dd = "" + d1 + d2;
+
+            document.getElementById(dd).innerHTML = "◯";
+            //обновляем цвет
+            ready();
+            //
+            //Отдаём очередь
+            document.querySelector(
+              ".moveTitle"
+            ).innerHTML = `Ход <spam style="color: red">красных!</spam>`;
+            whoISgoNOW = "redd";
+          }
+          if (resultGo == 2) {
+            //логика чтобы пойти направо
+            //добавляем шашку вперед и удаляем предыдущую
+            field[+t1 - 1][+t2 + 1] = cell_green;
+            field[+t1][+t2] = cell;
+            //объеденяем t1 и t2 - убираем нолик позади и добавляем нолик впереди
+            let tt = "" + t1 + t2;
+            document.getElementById(tt).innerHTML = "&nbsp";
+            tt = "" + t1 + t2;
+            let d1 = (+t1 - 1).toString();
+            let d2 = (+t2 + 1).toString();
+            let dd = "" + d1 + d2;
+
+            document.getElementById(dd).innerHTML = "◯";
+            //обновляем цвет
+            ready();
+            //
+            //Отдаём очередь
+            document.querySelector(
+              ".moveTitle"
+            ).innerHTML = `Ход <spam style="color: red">красных!</spam>`;
+            whoISgoNOW = "redd";
+          }
+        }
+        //
+        //Изменение поля при атаке для зелёных
+        //
+        while (flag_eat) {
+          flag_eat = false;
+          //
+          //съесть лево
+          //
+
+          //если все флаги отрицательные - скипаем
+          if (
+            canEatLeft == false &&
+            canEatLeftDown == false &&
+            canEatRight == false &&
+            canEatRightDown == false
+          ) {
+            console.log("Невозможно ничего съесть!!");
+            break;
+          }
+          //или выполняем обрисовку
+          if (canEatLeft == true && step == 3) {
+            //добавляем шашку вперед и удаляем предыдущую и съеденную
+            field[+t1 - 2][+t2 - 2] = cell_green;
+            field[+t1][+t2] = cell;
+            field[+t1 - 1][+t2 - 1] = cell;
+            //объеденяем t1 и t2 - убираем нолик позади и добавляем нолик впереди
+            let tt = "" + t1 + t2;
+            document.getElementById(tt).innerHTML = "&nbsp";
+            let d1 = (+t1 - 2).toString();
+            let d2 = (+t2 - 2).toString();
+            let dd = "" + d1 + d2;
+            document.getElementById(dd).innerHTML = "◯";
+            //удаляем съеденную шашку
+            let v1 = (+t1 - 1).toString();
+            let v2 = (+t2 - 1).toString();
+            let vv = "" + v1 + v2;
+            document.getElementById(vv).innerHTML = "&nbsp";
+            //обновляем цвет
+            ready();
+            canEatLeft = false;
+            canEatLeftDown = false;
+            canEatRight = false;
+            canEatRightDown = false;
+            //обновляем счётчик
+            red_count = red_count - 1;
+            document.getElementById(200).innerHTML = red_count;
+            //смотрим повторное кушание
+            let againEat = EatAgain(dd);
+            if (againEat == true) {
+            } else {
+              //Отдаём очередь
+              document.querySelector(
+                ".moveTitle"
+              ).innerHTML = `Ход <spam style="color: red">красных!</spam>`;
+              whoISgoNOW = "redd";
+              flag = false;
+            }
+          }
+          //
+          //съесть право
+          //
+          if (canEatRight == true && step == 4) {
+            //добавляем шашку вперед и удаляем предыдущую и съеденную
+            field[+t1 - 2][+t2 + 2] = cell_green;
+            field[+t1][+t2] = cell;
+            field[+t1 - 1][+t2 + 1] = cell;
+            //объеденяем t1 и t2 - убираем нолик позади и добавляем нолик впереди
+            let tt = "" + t1 + t2;
+            document.getElementById(tt).innerHTML = "&nbsp";
+            let d1 = (+t1 - 2).toString();
+            let d2 = (+t2 + 2).toString();
+            let dd = "" + d1 + d2;
+            document.getElementById(dd).innerHTML = "◯";
+            //удаляем съеденную шашку
+            let v1 = (+t1 - 1).toString();
+            let v2 = (+t2 + 1).toString();
+            let vv = "" + v1 + v2;
+            document.getElementById(vv).innerHTML = "&nbsp";
+            //обновляем цвет
+            ready();
+            canEatLeft = false;
+            canEatLeftDown = false;
+            canEatRight = false;
+            canEatRightDown = false;
+            //обновляем счётчик
+            red_count = red_count - 1;
+            document.getElementById(200).innerHTML = red_count;
+            //смотрим повторное кушание
+            let againEat = EatAgain(dd);
+            if (againEat == true) {
+            } else {
+              //Отдаём очередь
+              document.querySelector(
+                ".moveTitle"
+              ).innerHTML = `Ход <spam style="color: red">красных!</spam>`;
+              whoISgoNOW = "redd";
+              flag = false;
+            }
+          }
+          //
+          //съесть лево-низ
+          //
+          if (canEatLeftDown == true && step == 5) {
+            //добавляем шашку вперед и удаляем предыдущую и съеденную
+            field[+t1 + 2][+t2 - 2] = cell_green;
+            field[+t1][+t2] = cell;
+            field[+t1 + 1][+t2 - 1] = cell;
+            //объеденяем t1 и t2 - убираем нолик позади и добавляем нолик впереди
+            let tt = "" + t1 + t2;
+            document.getElementById(tt).innerHTML = "&nbsp";
+            let d1 = (+t1 + 2).toString();
+            let d2 = (+t2 - 2).toString();
+            let dd = "" + d1 + d2;
+            document.getElementById(dd).innerHTML = "◯";
+            //удаляем съеденную шашку
+            let v1 = (+t1 + 1).toString();
+            let v2 = (+t2 - 1).toString();
+            let vv = "" + v1 + v2;
+            document.getElementById(vv).innerHTML = "&nbsp";
+            //обновляем цвет
+            ready();
+            canEatLeft = false;
+            canEatLeftDown = false;
+            canEatRight = false;
+            canEatRightDown = false;
+            //обновляем счётчик
+            red_count = red_count - 1;
+            document.getElementById(200).innerHTML = red_count;
+
+            //смотрим повторное кушание
+            let againEat = EatAgain(dd);
+            if (againEat == true) {
+            } else {
+              //Отдаём очередь
+              document.querySelector(
+                ".moveTitle"
+              ).innerHTML = `Ход <spam style="color: red">красных!</spam>`;
+              whoISgoNOW = "redd";
+              flag = false;
+            }
+          }
+          //
+          //съесть право-низ
+          //
+          if (canEatRightDown == true && step == 6) {
+            //добавляем шашку вперед и удаляем предыдущую и съеденную
+            field[+t1 + 2][+t2 + 2] = cell_green;
+            field[+t1][+t2] = cell;
+            field[+t1 + 1][+t2 + 1] = cell;
+            //объеденяем t1 и t2 - убираем нолик позади и добавляем нолик впереди
+            let tt = "" + t1 + t2;
+            document.getElementById(tt).innerHTML = "&nbsp";
+            let d1 = (+t1 + 2).toString();
+            let d2 = (+t2 + 2).toString();
+            let dd = "" + d1 + d2;
+            document.getElementById(dd).innerHTML = "◯";
+            //удаляем съеденную шашку
+            let v1 = (+t1 + 1).toString();
+            let v2 = (+t2 + 1).toString();
+            let vv = "" + v1 + v2;
+            document.getElementById(vv).innerHTML = "&nbsp";
+            //обновляем цвет
+            ready();
+
+            canEatLeft = false;
+            canEatLeftDown = false;
+            canEatRight = false;
+            canEatRightDown = false;
+            //обновляем счётчик
+            red_count = red_count - 1;
+            document.getElementById(200).innerHTML = red_count;
+            //смотрим повторное кушание
+            let againEat = EatAgain(dd);
+            if (againEat == true) {
+            } else {
+              //Отдаём очередь
+              document.querySelector(
+                ".moveTitle"
+              ).innerHTML = `Ход <spam style="color: red">красных!</spam>`;
+              whoISgoNOW = "redd";
+              flag = false;
+            }
+          }
+        }
+      }
+
+      //Проверка на победителя
+      if (red_count == 0) {
+        alert("Зеленые победили!");
+        window.location.reload();
+      }
+      if (green_count == 0) {
+        alert("Красные победили!");
+        window.location.reload();
+      }
+    }
+    //
+    //Идти прямо - проверка
+    //
+    function goStraight(t1, t2) {
+      let right = true;
+      let left = true;
+      //
+      //для красных
+      //
+      if (whoISgoNOW == "redd") {
+        //console.log(t1);  console.log(t2);
+
+        //право
+        if (field[+t1 + 1][+t2 + 1].skipp == true) {
+          console.log("барьер");
+          right = false;
+        } else {
+          if (
+            field[+t1 + 1][+t2 + 1].hascheckers_green == true ||
+            field[+t1 + 1][+t2 + 1].hascheckers_red == true
+          ) {
+            right = false;
+          }
+        }
+        //лево
+        if (+t1 + 1 < 0 || +t2 - 1 < 0) {
+          console.log("барьер");
+          left = false;
+        } else {
+          if (
+            field[+t1 + 1][+t2 - 1].hascheckers_green == true ||
+            field[+t1 + 1][+t2 - 1].hascheckers_red == true
+          ) {
+            left = false;
+          }
+        }
+        //финальная проверка
+        if (right == true && left == true) {
+          console.log("Можно идти в обе стороны");
+          return 3;
+        } else if (1) {
+          if (right == true) {
+            console.log("Можно идти направо");
+            return 2;
+          }
+          if (left == true) {
+            console.log("Можно идти налево");
+            return 1;
+          }
+          if (right == false && left == false) {
+            console.log("Никуда идти нельзя");
+            return 0;
+          }
+        }
+      }
+      //
+      //для зеленых
+      //
+      if (whoISgoNOW == "greenn") {
+        //console.log(t1);  console.log(t2);
+
+        //право
+        if (field[+t1 - 1][+t2 + 1].skipp == true) {
+          console.log("барьер");
+          right = false;
+        } else {
+          if (
+            field[+t1 - 1][+t2 + 1].hascheckers_green == true ||
+            field[+t1 - 1][+t2 + 1].hascheckers_red == true
+          ) {
+            right = false;
+          }
+        }
+        //лево
+        if (+t1 - 1 < 0 || +t2 - 1 < 0) {
+          console.log("барьер");
+          left = false;
+        } else {
+          if (
+            field[+t1 - 1][+t2 - 1].hascheckers_green == true ||
+            field[+t1 - 1][+t2 - 1].hascheckers_red == true
+          ) {
+            left = false;
+          }
+        }
+
+        //финальная проверка
+        if (right == true && left == true) {
+          console.log("Можно идти в обе стороны");
+          return 3;
+        } else if (1) {
+          if (right == true) {
+            console.log("Можно идти направо");
+            return 2;
+          }
+          if (left == true) {
+            console.log("Можно идти налево");
+            return 1;
+          }
+          if (right == false && left == false) {
+            console.log("Никуда идти нельзя");
+            return 0;
+          }
+        }
+      }
+    }
+    //
+    //Съесть противника - проверка
+    //
+    function EatSomeone(t1, t2) {
+      //0 - никого нельзя есть, 3 - налево, 4 - направо, 5 - налево-внизу, 6 - направо внизу
+      t1 = +t1 + 0;
+      t2 = +t2 + 0;
+      //
+      //для красных
+      //
+      if (whoISgoNOW == "redd") {
+        //проверка лево
+        if (t1 + 2 < 0 || t2 - 2 < 0) {
+        } else {
+          if (
+            field[+t1 + 1][+t2 - 1].hascheckers_green == true &&
+            field[+t1 + 2][+t2 - 2].hascheckers_green == false &&
+            field[+t1 + 2][+t2 - 2].hascheckers_red == false
+          ) {
+            console.log("Слева можно съесть зеленую шашку");
+            canEatLeft = true;
+          }
+        }
+        //проверка право
+        if (t1 + 2 > 0 && t2 + 2 > 0) {
+          if (
+            field[+t1 + 1][+t2 + 1].hascheckers_green == true &&
+            field[+t1 + 2][+t2 + 2].hascheckers_green == false &&
+            field[+t1 + 2][+t2 + 2].hascheckers_red == false
+          ) {
+            console.log("Справа можно съесть зеленую шашку");
+            canEatRight = true;
+          }
+        }
+        //проверка низа-лево
+        if (t1 - 2 < 0 || t2 - 2 < 0) {
+        } else {
+          if (
+            field[+t1 - 1][+t2 - 1].hascheckers_green == true &&
+            field[+t1 - 2][+t2 - 2].hascheckers_green == false &&
+            field[+t1 - 2][+t2 - 2].hascheckers_red == false
+          ) {
+            console.log("Слева снизу можно съесть зеленую шашку");
+            canEatLeftDown = true;
+          }
+        }
+        //проверка низа-право
+        if (t1 - 2 > 0 && t2 + 2 > 0) {
+          if (
+            field[+t1 - 1][+t2 + 1].hascheckers_green == true &&
+            field[+t1 - 2][+t2 + 2].hascheckers_green == false &&
+            field[+t1 - 2][+t2 + 2].hascheckers_red == false
+          ) {
+            console.log("Справа снизу можно съесть зеленую шашку");
+            canEatRightDown = true;
+          }
+        }
+        if (
+          canEatLeft == true ||
+          canEatLeftDown == true ||
+          canEatRight == true ||
+          canEatRightDown == true
+        ) {
+          return true;
+        }
+      }
+      //
+      //для зеленых
+      //
+      if (whoISgoNOW == "greenn") {
+        //проверка лево
+        if (t1 - 2 < 0 || t2 - 2 < 0) {
+        } else {
+          if (
+            field[+t1 - 1][+t2 - 1].hascheckers_red == true &&
+            field[+t1 - 2][+t2 - 2].hascheckers_green == false &&
+            field[+t1 - 2][+t2 - 2].hascheckers_red == false
+          ) {
+            console.log("Слева можно съесть красную шашку");
+            canEatLeft = true;
+          }
+        }
+        //проверка право
+        if (t1 - 2 > 0 && t2 + 2 > 0) {
+          if (
+            field[+t1 - 1][+t2 + 1].hascheckers_red == true &&
+            field[+t1 - 2][+t2 + 2].hascheckers_green == false &&
+            field[+t1 - 2][+t2 + 2].hascheckers_red == false
+          ) {
+            console.log("Справа можно съесть красную шашку");
+            canEatRight = true;
+          }
+        }
+        //проверка низа-лево
+        if (t1 + 2 < 0 || t2 - 2 < 0) {
+        } else {
+          if (
+            field[+t1 + 1][+t2 - 1].hascheckers_red == true &&
+            field[+t1 + 2][+t2 - 2].hascheckers_green == false &&
+            field[+t1 + 2][+t2 - 2].hascheckers_red == false
+          ) {
+            console.log("Слева снизу можно съесть красную шашку");
+            canEatLeftDown = true;
+          }
+        }
+        //проверка низа-право
+        if (t1 + 2 > 0 && t2 + 2 > 0) {
+          if (
+            field[+t1 + 1][+t2 + 1].hascheckers_red == true &&
+            field[+t1 + 2][+t2 + 2].hascheckers_green == false &&
+            field[+t1 + 2][+t2 + 2].hascheckers_red == false
+          ) {
+            console.log("Справа снизу можно съесть красную шашку");
+            canEatRightDown = true;
+          }
+        }
+        if (
+          canEatLeft == true ||
+          canEatLeftDown == true ||
+          canEatRight == true ||
+          canEatRightDown == true
+        ) {
+          return true;
+        }
+      }
+    }
+    //
+    //Повторное кушание
+    //
+    function EatAgain(dd) {
+      let [t1, t2] = dd.toString().split("");
+      if (t2 == undefined) {
+        t2 = t1;
+        t1 = 0;
+      }
+      EatSomeone(t1, t2);
+
+      if (
+        canEatLeft == true ||
+        canEatLeftDown == true ||
+        canEatRight == true ||
+        canEatRightDown == true
+      ) {
+        Game(t1, t2);
+        return true;
+      } else {
+        return false;
+      }
+    }
+  </script>
+</html>

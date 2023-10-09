@@ -1,0 +1,376 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Billiard</title>
+  </head>
+  <body>
+    <br /><br />
+    <center>
+      <div class="table">
+        <div class="kia">
+          <img src="1.png" class="img1" />
+        </div>
+
+        <div class="ball">
+          <img src="2.png" class="img2" />
+        </div>
+
+        <div class="ball-2">
+          <img src="3.png" class="img-ball-1" />
+        </div>
+
+        <div class="ballblue">
+          <img src="4.png" class="img-ball-blue" />
+        </div>
+
+        <div class="ballgreen">
+          <img src="5.png" class="img-ball-green" />
+        </div>
+        <!--///////-->
+        <div class="kia-2">
+          <img src="1.png" class="img11" />
+        </div>
+        <div class="kia-3">
+          <img src="1.png" class="img111" />
+        </div>
+      </div>
+    </center>
+    <style>
+      body {
+        overflow-y: hidden;
+        overflow-x: hidden;
+      }
+      .table {
+        height: 600px;
+        width: 1000px;
+        background-image: url(https://png-library.net/images/8iE5kX8ia.jpg);
+      }
+
+      .img1 {
+        height: 200px;
+        width: 200px;
+        margin-top: 330px;
+        margin-right: 500px;
+        transform: rotate(90deg);
+      }
+
+      .img2 {
+        height: 150px;
+        width: 150px;
+        margin-top: -300px;
+        margin-right: 270px;
+      }
+
+      .img-ball {
+        height: 150px;
+        width: 150px;
+      }
+
+      .img-ball-1 {
+        height: 50px;
+        width: 90px;
+        margin-top: -140px;
+        margin-right: -650px;
+      }
+
+      .kia {
+        position: relative;
+        animation: kia1 2s 0.5s;
+        animation-fill-mode: forwards;
+      }
+
+      .ball {
+        position: relative;
+        animation: ball 3s linear 1.5s;
+        animation-fill-mode: forwards;
+      }
+
+      .ball-2 {
+        position: relative;
+        animation: ball-2 1s linear 2.4s;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes ball {
+        0% {
+          bottom: 0px;
+          left: 0px;
+          opacity: 1;
+        }
+        10% {
+          bottom: 240px;
+          left: 240px;
+          opacity: 1;
+        }
+        30% {
+          bottom: -90px;
+          left: 440px;
+          opacity: 1;
+        }
+        90% {
+          bottom: 250px;
+          left: 130px;
+          opacity: 1;
+        }
+        100% {
+          bottom: 250px;
+          left: 130px;
+          opacity: 0;
+        }
+      }
+
+      @keyframes ball-2 {
+        0% {
+          bottom: 0px;
+          left: 0px;
+          opacity: 1;
+        }
+
+        90% {
+          bottom: -120px;
+          left: 120px;
+          opacity: 1;
+        }
+        100% {
+          bottom: -120px;
+          left: 120px;
+          opacity: 0;
+        }
+      }
+
+      @keyframes kia1 {
+        0% {
+          right: 0px;
+          top: 0px;
+          opacity: 1;
+        }
+        10% {
+          right: 20px;
+          top: 20px;
+          opacity: 1;
+        }
+
+        20% {
+          right: -20px;
+          top: -20px;
+          opacity: 1;
+        }
+
+        40% {
+          right: 100px;
+          top: 100px;
+          opacity: 1;
+        }
+
+        45% {
+          right: 0px;
+          top: 0px;
+          opacity: 1;
+        }
+        50% {
+          right: 0px;
+          top: 0px;
+          opacity: 1;
+        }
+        75% {
+          opacity: 0;
+          right: 0px;
+          top: 0px;
+        }
+        99% {
+          opacity: 0;
+          right: 0px;
+          top: 0px;
+        }
+        100% {
+          opacity: 0;
+          right: 1000px;
+          top: 1000px;
+        }
+      }
+      .img11 {
+        height: 200px;
+        width: 200px;
+        margin-top: -310px;
+        margin-right: 140px;
+      }
+
+      .kia-2 {
+        position: relative;
+        animation: kia2 5s 0s;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes kia2 {
+        0% {
+          left: 0px;
+          top: 0px;
+          opacity: 0;
+        }
+        59% {
+          left: 0px;
+          top: 0px;
+          opacity: 0;
+        }
+        60% {
+          left: 0px;
+          top: 0px;
+          opacity: 1;
+        }
+
+        63% {
+          left: 20px;
+          top: 20px;
+          opacity: 1;
+        }
+
+        65% {
+          left: -20px;
+          top: -20px;
+          opacity: 1;
+        }
+
+        70% {
+          left: 100px;
+          top: 100px;
+          opacity: 1;
+        }
+
+        73% {
+          left: 0px;
+          top: 0px;
+          opacity: 1;
+        }
+
+        90% {
+          opacity: 0;
+          right: 0px;
+          top: 0px;
+        }
+
+        99% {
+          opacity: 0;
+          right: 0px;
+          top: 0px;
+        }
+
+        100% {
+          opacity: 0;
+          right: 1000px;
+          top: 1000px;
+        }
+      }
+
+      /*///////////////*/
+
+.img-ball-green {
+    height: 40px;
+    width: 40px;
+    margin-top: -350px;
+    margin-right: 400px;
+}
+
+.img-ball-blue {
+    height: 40px;
+    width: 60px;
+    margin-top: -400px;
+    margin-right: 600px;
+}
+
+.ballgreen {
+    position: relative;
+    animation: ballgreen 1.5s linear 3.7s;
+    animation-fill-mode: forwards;
+   
+}
+
+@keyframes ballgreen {
+    0% {
+        top: 0px;
+        left: 0px;
+        opacity: 1;
+    }
+
+    30% {
+        top: -50px;
+        left: -80px;
+        opacity: 1;
+    }
+
+    90% {
+        top: -140px;
+        left: 200px;
+        opacity: 1;
+    }
+
+    100% {
+        top: -140px;
+        left: 200px;
+        opacity: 0;
+    }
+}
+
+.ballblue {
+    position: relative;
+    animation: ballblue 1.5s linear 4.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes ballblue {
+    0% {
+        top: 0px;
+        left: 0px;
+        opacity: 1;
+    }
+
+    90% {
+        top: -100px;
+        left: -140px;
+        opacity: 1;
+    }
+
+    100% {
+        top: -100px;
+        left: -140px;
+        opacity: 0;
+    }
+}
+
+/*/ //////////////*/
+
+      .img111 {
+        height: 200px;
+        width: 200px;
+        margin-top: -410px;
+        margin-right: -940px;
+        transform: rotate(44deg);
+      }
+
+      .kia-3 {
+        position: relative;
+        animation: kia3 6.5s 0s;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes kia3 {
+        0% {
+          opacity: 0;
+        }
+
+        82% {
+          top: 0px;
+          opacity: 0;
+        }
+
+        85% {
+          top: 0px;
+          opacity: 1;
+        }
+
+        100% {
+          top: 80px;
+          opacity: 1;
+        }
+      }
+    </style>
+  </body>
+</html>
